@@ -8,10 +8,13 @@ import img2 from "../../assets/home/slide2.jpg";
 import img3 from "../../assets/home/slide3.jpg";
 import img4 from "../../assets/home/slide4.jpg";
 import img5 from "../../assets/home/slide5.jpg";
+import Sectiontitle from '../shared/Section title/Sectiontitle';
 
 const Category = () => {
     return (
-        <Swiper
+        <section>
+            <Sectiontitle subheading={"From 11.00am to 10.00pm"} heading={"Order Online"}></Sectiontitle>
+            <Swiper
         slidesPerView={4}
         spaceBetween={30}
         pagination={{
@@ -36,6 +39,7 @@ const Category = () => {
         <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Salads</h3>
         </SwiperSlide>
       </Swiper>
+        </section>
     );
 };
 
