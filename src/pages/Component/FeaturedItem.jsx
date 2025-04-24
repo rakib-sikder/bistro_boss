@@ -1,6 +1,7 @@
 import React from 'react';
-import Sectiontitle from '../Section title/Sectiontitle';
-import featuredimg from '../../../assets/home/featured.jpg'
+import Sectiontitle from '../shared/Section title/Sectiontitle';
+import featuredimg from "../../assets/home/featured.jpg"
+
 
 const FeaturedItem = () => {
     return (

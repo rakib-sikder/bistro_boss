@@ -10,6 +10,7 @@ import img4 from "../../assets/home/slide4.jpg";
 import img5 from "../../assets/home/slide5.jpg";
 import Sectiontitle from '../shared/Section title/Sectiontitle';
 
+
 const Category = () => {
     return (
         <section>

@@ -1,8 +1,11 @@
 import React from 'react';
-import Banner from './Banner';
-import Category from './category';
-import PopularMenu from './PopularMenu';
-import FeaturedItem from '../shared/Component/FeaturedItem';
+
+import FeaturedItem from '../Component/FeaturedItem';
+import Testimonial from '../Component/Testimonial';
+import Banner from '../Component/Banner';
+import Category from '../Component/Category';
+import PopularMenu from '../Component/PopularMenu';
+
 
 const Home = () => {
     return (
@@ -14,6 +17,9 @@ const Home = () => {
             <PopularMenu />
             {/* Add more sections as needed */}
             <FeaturedItem />
+
+            {/* <Testimonial /> */}
+            <Testimonial />
         </div>
     );
 };
