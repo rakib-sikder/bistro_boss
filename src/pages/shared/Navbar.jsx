@@ -1,26 +1,27 @@
-import { Link, Links } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import "./Navbar.css"; // Import your CSS file for custom styles
 
 const Navbar = () => {
   const Links = (
     <>
       <ul className="menu menu-horizontal px-1 gap-4 text-sm font-semibold">
         <li>
-          <Link to="/" className="text-yellow-400">
+          <NavLink to="/" >
             HOME
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/contact">CONTACT US</Link>
+          <NavLink to="/contact">CONTACT US</NavLink>
         </li>
         <li>
-          <Link to="/dashboard">DASHBOARD</Link>
+          <NavLink to="/dashboard">DASHBOARD</NavLink>
         </li>
         <li>
-          <Link to="/menu">OUR MENU</Link>
+          <NavLink to="/menu">OUR MENU</NavLink>
         </li>
         <li>
-          <Link to="/shop">OUR SHOP</Link>
+          <NavLink to="/shop">OUR SHOP</NavLink>
         </li>
       </ul>
     </>
@@ -28,7 +29,7 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 opacity-80 bg-black fixed z-10 max-w-screen-xl mx-auto px-4 lg:px-2 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -69,12 +70,12 @@ const Navbar = () => {
         <div className="navbar-end w-1/4">
           <div className="flex items-center gap-4">
             {/* Cart with badge */}
-            <Link to="/cart" className="relative">
+            <NavLink to="/cart" className="relative">
               <FaShoppingCart className="text-xl" />
               <span className="badge badge-error badge-sm absolute -top-2 -right-2">
                 7
               </span>
-            </Link>
+            </NavLink>
 
             {/* Sign out + user icon */}
             <button className="flex items-center gap-1">
