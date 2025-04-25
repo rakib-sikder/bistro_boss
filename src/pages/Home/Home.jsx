@@ -5,6 +5,8 @@ import Testimonial from '../Component/Testimonial';
 import Banner from '../Component/Banner';
 import Category from '../Component/Category';
 import PopularMenu from '../Component/PopularMenu';
+import ResturentDetails from '../Component/ResturentDetails';
+import ContactNumber from '../Component/ContactNumber';
 
 
 const Home = () => {
@@ -14,8 +16,10 @@ const Home = () => {
             {/* You can add more components or content here */}
             <Category />
             {/* <PopularMenu /> */}
-            <PopularMenu />
             {/* Add more sections as needed */}
+            <ResturentDetails />
+            <PopularMenu />
+            <ContactNumber />
             <FeaturedItem />
 
             {/* <Testimonial /> */}

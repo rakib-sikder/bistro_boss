@@ -1,6 +1,7 @@
 import React from 'react';
 import Sectiontitle from '../shared/Section title/Sectiontitle';
 import featuredimg from "../../assets/home/featured.jpg"
+import Button from '../shared/Component/Button';
 
 
 const FeaturedItem = () => {
@@ -18,7 +19,7 @@ const FeaturedItem = () => {
                     <p className='uppercase '> Where can i get some?</p>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis pariatur optio tenetur eum laboriosam, maiores similique vero quisquam consectetur eaque dolorem odit est quis in voluptates rerum aliquid exercitationem fugit dolorum nostrum eius magnam deserunt! Dolor esse tempora molestias laboriosam nihil optio illum excepturi vero mollitia quasi, est sunt ullam.
                     </p>
-                    <button className='btn btn-outline border-0 border-b-4 mt-4'>Order Now</button>
+                    <Button btnText={"Read More"}></Button>
                 </div>
             </div>
             </div>
