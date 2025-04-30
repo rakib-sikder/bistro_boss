@@ -19,8 +19,8 @@ const ItemDetails = ({
       }}
     >
       <div className={`${backgroundColor} ${opacity} text-center p-24 m-24 `}>
-        <h3 className="uppercase text-4xl">{heading}</h3>
-        <p className="text-base font-bold text-center">
+        <h3 className="uppercase text-4xl mb-4">{heading}</h3>
+        <p className="text-sm font-bold text-center">
           {textDetails}
         </p>
       </div>
