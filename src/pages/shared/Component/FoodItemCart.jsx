@@ -2,7 +2,7 @@
 import Button from './Button';
 
 
-const FoodItemCart = ({img,FoodName,FoodDetails}) => {
+const FoodItemCart = ({img,FoodName,FoodDetails,price}) => {
     
     return (
          <div>
@@ -14,8 +14,9 @@ const FoodItemCart = ({img,FoodName,FoodDetails}) => {
               alt="Shoes"
             />
           </figure>
+          <p className={`absolute top-4 right-6 ${price ? "bg-[#111827]": ""} text-white px-2 py-1`}>{price}{`${price = "undefined"? "" : "$"}`}</p>
           <div className="card-body text-center">
-            <h2 className="text-xl">{FoodName}</h2>
+            <h2 className= "text-xl">{FoodName}</h2>
             <p>
                 {
                     FoodDetails
