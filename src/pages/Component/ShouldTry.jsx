@@ -1,67 +1,21 @@
-import React from "react";
-import Sectiontitle from "../shared/Section title/Sectiontitle";
-import Button from "../shared/Component/Button";
-import img from "../../assets/home/featured.jpg";
+import useMenu from "../../hooks/useMenu";
+import FoodItemCart from "../shared/Component/FoodItemCart";
 
 const ShouldTry = () => {
-  return (
-    <div>
-      
+  const [ menu, loading ] = useMenu();
 
-      <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src={img}
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body text-center">
-            <h2 className="text-xl">Caeser Salad</h2>
-            <p>
-            Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
-            </p>
-            <div className="card-actions justify-center text-[#BB8506]">
-              <Button className="hover:text-[#BB8506] " btnText={"Add to Cart"}></Button>
-            </div>
-          </div>
-        </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src={img}
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body text-center">
-            <h2 className="text-xl">Caeser Salad</h2>
-            <p>
-            Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
-            </p>
-            <div className="card-actions justify-center text-[#BB8506]">
-              <Button className="hover:text-[#BB8506] " btnText={"Add to Cart"}></Button>
-            </div>
-          </div>
-        </div>
-        <div className="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src={img}
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body text-center">
-            <h2 className="text-xl">Caeser Salad</h2>
-            <p>
-            Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
-            </p>
-            <div className="card-actions justify-center text-[#BB8506]">
-              <Button className="hover:text-[#BB8506] " btnText={"Add to Cart"}></Button>
-            </div>
-          </div>
-        </div>
-      </div>
+  const popularMenu = menu?.filter((item) => item.category === "popular");
+  const firstThree = popularMenu?.slice(1, 4);
+
+  return (
+    <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
+      {
+            firstThree?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            }
+ 
     </div>
+    
+    
   );
 };
 

@@ -36,23 +36,39 @@ const Orderpage = () => {
         </TabList>
 
         <TabPanel >
-            <div className="grid grid-cols-3 gap-10 mt-10 mb-20">
+            <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
             salad?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
             }
             </div>
             </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+            <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
+            {
+            pizza?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            }
+            </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 3</h2>
+            <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
+            {
+            dessert?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            }
+            </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 4</h2>
+            <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
+            {
+            soup?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            }
+            </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 5</h2>
+            <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
+            {
+            drinks?.map((item) =><div ><FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            }
+            </div>
         </TabPanel>
       </Tabs>
     </div>
