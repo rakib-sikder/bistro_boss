@@ -9,7 +9,7 @@ const FeaturedItem = () => {
         <section className={`bg-fixed bg-no-repeat bg-cover mt-32`} style={{backgroundImage: `url(${featuredimg})`}}>
             <div className='bg-black bg-opacity-40 pt-12 pb-12'>
 
-            <Sectiontitle subheading={"Check it out"} heading={"Featured Items"} textColor={"text-white"}></Sectiontitle>
+            <Sectiontitle subHeading={"Check it out"} heading={"Featured Items"} textColor={"text-white"}></Sectiontitle>
             <div className='md:flex justify-center items-center gap-10 py-20 px-36'>
                 <div>
                     <img src={featuredimg} alt="" />

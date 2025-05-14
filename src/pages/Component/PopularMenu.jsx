@@ -10,7 +10,7 @@ const PopularMenu = () => {
     const popular= menu?.filter(item => item.category === 'popular')
     return (
         <section className="flex flex-col items-center justify-center my-20">
-            <Sectiontitle subheading={"Poular items"} heading={"From our menu"}></Sectiontitle>
+            <Sectiontitle subHeading={"Poular items"} heading={"From our menu"}></Sectiontitle>
 
             <div className='grid md:grid-cols-2 '>
                 {

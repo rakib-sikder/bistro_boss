@@ -1,11 +1,8 @@
-import React from "react";
-import Sectiontitle from "../shared/Section title/Sectiontitle";
-import Button from "../shared/Component/Button";
-import img from "../../assets/home/featured.jpg";
+import React from 'react';
 
-const ShouldTry = () => {
-  return (
-    <div>
+const FoodItemCart = () => {
+    return (
+         <div>
       
 
       <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
@@ -62,7 +59,7 @@ const ShouldTry = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default ShouldTry;
+export default FoodItemCart;

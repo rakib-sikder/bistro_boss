@@ -9,6 +9,7 @@ import ResturentDetails from '../Component/ResturentDetails';
 import ContactNumber from '../Component/ContactNumber';
 import ShouldTry from '../Component/ShouldTry';
 import { Helmet } from 'react-helmet';
+import Sectiontitle from '../shared/Section title/Sectiontitle';
 
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
         <div>
             <Helmet>
                 <title>Bistro Boss | Home</title>
-               
+
                 
             </Helmet>
             <Banner />
@@ -27,6 +28,10 @@ const Home = () => {
             <ResturentDetails />
             <PopularMenu />
             <ContactNumber />
+        <Sectiontitle
+        subHeading={"Should Try"}
+        heading={"CHEF RECOMMENDS"}
+      ></Sectiontitle>
             <ShouldTry />
             <FeaturedItem />
 
