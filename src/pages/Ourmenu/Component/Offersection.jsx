@@ -1,12 +1,10 @@
-import React from "react";
-import useMenu from "../../../hooks/useMenu";
 import Button from "../../shared/Component/Button";
+
 import MenuItem from "../../shared/Component/MenuItem";
 import Sectiontitle from "../../shared/Section title/Sectiontitle";
+import { Link, } from "react-router-dom";
 
-const Offersection = () => {
-    const [menu, loading] = useMenu()
-    const offered= menu?.filter(item => item.category === 'offered')
+const Offersection = ({offered}) => {
   return (
     <div className="flex flex-col items-center justify-center my-20">
       <Sectiontitle
@@ -19,7 +17,9 @@ const Offersection = () => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
-      <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button>
+      <Link to="/shop">
+      <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button></Link>
+      
     </div>
   );
 };

@@ -5,6 +5,7 @@ import OurMenu from "../pages/Ourmenu/OurMenu";
 import Orderpage from "../pages/Order/Orderpage";
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -28,8 +29,10 @@ export const router = createBrowserRouter([
         element: <OurMenu />,
       },
       {
-        path: "/shop",
+       
+        path  : '/shop/',
         element: <Orderpage />,
+
       },
       {
         path: "/cart",
