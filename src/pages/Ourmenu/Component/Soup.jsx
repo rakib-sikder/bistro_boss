@@ -2,6 +2,7 @@ import Button from "../../shared/Component/Button";
 import MenuItem from "../../shared/Component/MenuItem";
 import img from '../../../assets/home/chef-service.jpg'
 import ItemDetails from "../../shared/Component/ItemDetails";
+import { Link } from "react-router-dom";
 
 const Soup = ({ soup }) => {
   return (
@@ -17,7 +18,9 @@ const Soup = ({ soup }) => {
             <MenuItem key={item._id} item={item} />
           ))}
         </div>
+        <Link to={`/order/soup`}>
         <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button>
+        </Link>
       </div>
     </>
   );

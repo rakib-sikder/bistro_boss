@@ -22,7 +22,7 @@ const Dessert = ({dessert}) => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
-      <Link to="/shop">
+      <Link to={`/order/dessert`}>
       <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button></Link>
       
     </div>

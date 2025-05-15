@@ -3,6 +3,7 @@ import Button from "../../shared/Component/Button";
 import ItemDetails from "../../shared/Component/ItemDetails";
 import MenuItem from "../../shared/Component/MenuItem";
 import img from '../../../assets/home/chef-service.jpg'
+import { Link } from "react-router-dom";
 
 const Salad = ({salad}) => {
   return (
@@ -20,7 +21,9 @@ const Salad = ({salad}) => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
+      <Link to={`/order/salad`}>
       <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button>
+      </Link>
     </div>
     </>
     

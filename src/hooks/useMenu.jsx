@@ -7,18 +7,16 @@ const useMenu = () => {
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
         fetch('menu.json')
-        .then(res => res.json())
+        .then(res => (res.json(),console.log(res)))
         .then(data => {
             setMenu(data);
             setLoading(false);
         })
-        .catch(error => {
-            console.error("Error fetching menu data:", error);
-            setLoading(false);
-        });
     },[])
+    console.log(menu);
     return (
         [menu, loading]
+
     );
 };
 

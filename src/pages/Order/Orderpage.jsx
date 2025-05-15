@@ -5,19 +5,28 @@ import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import useMenu from "../../hooks/useMenu";
 import FoodItemCart from "../shared/Component/FoodItemCart";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Orderpage = () => {
-  const [menu, loading] = useMenu();
+    const { category}= useParams()
+    const catagoryindex =["salad","pizza","dessert","soup","drinks"]
+    const index = catagoryindex.indexOf(category)
+
+    const [tabIndex, setTabIndex] = useState(index);
+  const [menu, loading] = useMenu();    
   const pizza = menu?.filter((item) => item.category === "pizza");
   const salad = menu?.filter((item) => item.category === "salad");
   const dessert = menu?.filter((item) => item.category === "dessert");
   const soup = menu?.filter((item) => item.category === "soup");
   const drinks = menu?.filter((item) => item.category === "drinks");
 
+
   return (
     <div>
       <Helmet>
-        <title>Bistro boss | Shop</title>
+        <title>Bistro boss | Order Food
+        </title>
       </Helmet>
 
       <PageBanner
@@ -26,7 +35,8 @@ const Orderpage = () => {
         textDetails={"Would you like to try a dish?"}
       ></PageBanner>
 
-      <Tabs className="max-w-screen-xl mx-auto">
+      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}
+      className="max-w-screen-xl mx-auto">
         <TabList className="uppercase font-bold flex justify-center items-center gap-10 mt-10">
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
@@ -36,8 +46,11 @@ const Orderpage = () => {
         </TabList>
 
         <TabPanel >
+
+           
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
+
             salad?.map((item) =><div ><FoodItemCart key={item._id} price={item.price} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
             }
             </div>

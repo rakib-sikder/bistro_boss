@@ -17,7 +17,7 @@ const Offersection = ({offered}) => {
           <MenuItem key={item._id} item={item} />
         ))}
       </div>
-      <Link to="/shop">
+      <Link to={`/order/offer`}>
       <Button btnText={"ORDER YOUR FAVOURITE FOOD"}></Button></Link>
       
     </div>

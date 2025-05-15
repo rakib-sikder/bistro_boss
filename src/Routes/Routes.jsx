@@ -17,25 +17,25 @@ export const router = createBrowserRouter([
 
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <div>Contact Us</div>,
       },
       {
-        path: "/dashboard",
+        path: "dashboard",
         element: <div>Dashboard</div>,
       },
       {
-        path: "/menu",
+        path: "menu",
         element: <OurMenu />,
       },
       {
        
-        path  : '/shop/',
+        path  : 'order/:category',
         element: <Orderpage />,
 
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <div>Cart</div>,
       }
     ]
