@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import OurMenu from "../pages/Ourmenu/OurMenu";
 import Orderpage from "../pages/Order/Orderpage";
+import Login from "../pages/Login/Login";
 
 
 
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <div>Cart</div>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>
       }
     ]
   },
