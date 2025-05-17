@@ -7,8 +7,18 @@ import useMenu from "../../hooks/useMenu";
 import FoodItemCart from "../shared/Component/FoodItemCart";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import Typography from '@mui/material/Typography';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const Orderpage = () => {
+
+
+  const [page, setPage] = useState(10);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
     const { category}= useParams()
     const catagoryindex =["salad","pizza","dessert","soup","drinks"]
     const index = catagoryindex.indexOf(category)
@@ -50,9 +60,17 @@ const Orderpage = () => {
            
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
+               
 
-            salad?.map((item) =><div ><FoodItemCart key={item._id} price={item.price} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            salad?.map((item) =><div >
+              
+              <FoodItemCart key={item._id} price={item.price} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart>
+              </div>)
             }
+            <Stack spacing={2}>
+      <Typography>Page: {page}</Typography>
+      <Pagination count={Math.ceil(salad.length/6)} page={page} onChange={handleChange} />
+    </Stack>
             </div>
             </TabPanel>
         <TabPanel>
