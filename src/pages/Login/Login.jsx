@@ -1,5 +1,16 @@
+import { useRef, useState } from 'react';
+import { useEffect } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
 
 const Login = () => {
+  const [disable, setDisable]= useState(true)
+
+
+
+    useEffect(()=>{
+      loadCaptchaEnginge(6);
+    },[])
    
     const hendelLogin= e=>{
         e.preventDefault()
@@ -7,6 +18,15 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password)
+    }
+    const captchaRef = useRef(null)
+    const captchaVerify=()=>{
+      const value = captchaRef.current.value
+      if(validateCaptcha(value)){
+        setDisable(false)
+      }else{
+        setDisable(true)
+      }
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -23,10 +43,14 @@ const Login = () => {
         <form onSubmit={hendelLogin} className="fieldset">
           <label className="label">Email</label>
           <input type="email" name='email' className="input" placeholder="Email" />
+          
           <label className="label">Password</label>
           <input type="password" name='password' className="input" placeholder="Password" />
+          <label className="label"><LoadCanvasTemplate /></label>
+          
+          <input type="text"ref={captchaRef} name='captcha' onMouseLeave={captchaVerify} className="input" placeholder="enter captcher here..." />
+          <button disabled={disable} className="btn btn-neutral mt-4">Login</button>
           <div><a className="link link-hover">Forgot password?</a></div>
-          <button className="btn btn-neutral mt-4">Login</button>
         </form>
       </div>
     </div>
