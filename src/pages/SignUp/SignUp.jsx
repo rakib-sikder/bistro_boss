@@ -1,6 +1,6 @@
 
 
-const SignIn = () => {
+const SignUp = () => {
     return (
         <div>
             hello
@@ -8,4 +8,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;
