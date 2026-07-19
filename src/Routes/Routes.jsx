@@ -5,6 +5,9 @@ import OurMenu from "../pages/Ourmenu/OurMenu";
 import Orderpage from "../pages/Order/Orderpage";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import Contact from "../pages/Contact/Contact";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Cart from "../pages/Cart/Cart";
 
 
 
@@ -20,25 +23,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "contact",
-        element: <div>Contact Us</div>,
+        element: <Contact />,
       },
       {
         path: "dashboard",
-        element: <div>Dashboard</div>,
+        element: <Dashboard />,
       },
       {
         path: "menu",
         element: <OurMenu />,
       },
       {
-       
+
         path  : 'order/:category',
         element: <Orderpage />,
 
       },
       {
         path: "cart",
-        element: <div>Cart</div>,
+        element: <Cart />,
       },
       {
         path: "login",

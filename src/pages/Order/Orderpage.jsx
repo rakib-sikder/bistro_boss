@@ -67,7 +67,7 @@ const Orderpage = () => {
 
             salad?.map((item) =><div >
               
-              <FoodItemCart key={item._id} price={item.price} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart>
+              <FoodItemCart key={item._id} item={item} />
               </div>)
             }
             <Stack spacing={2}>
@@ -79,28 +79,28 @@ const Orderpage = () => {
         <TabPanel>
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
-            pizza?.map((item) =><div ><FoodItemCart price={item.price} key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            pizza?.map((item) =><div ><FoodItemCart key={item._id} item={item} /></div>)
             }
             </div>
         </TabPanel>
         <TabPanel>
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
-            dessert?.map((item) =><div ><FoodItemCart price={item.price} key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            dessert?.map((item) =><div ><FoodItemCart key={item._id} item={item} /></div>)
             }
             </div>
         </TabPanel>
         <TabPanel>
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
-            soup?.map((item) =><div ><FoodItemCart price={item.price} key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            soup?.map((item) =><div ><FoodItemCart key={item._id} item={item} /></div>)
             }
             </div>
         </TabPanel>
         <TabPanel>
             <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
             {
-            drinks?.map((item) =><div ><FoodItemCart price={item.price} key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe}></FoodItemCart></div>)
+            drinks?.map((item) =><div ><FoodItemCart key={item._id} item={item} /></div>)
             }
             </div>
         </TabPanel>

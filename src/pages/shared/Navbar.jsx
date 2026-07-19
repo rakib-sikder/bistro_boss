@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { Menu, ShoppingCart, LogOut } from "lucide-react";
 
 import { AuthContext } from "../../userAuthentication/AuthProvider";
+import { CartContext } from "../../cart/CartProvider";
 import LogoMark from "./Component/LogoMark";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,6 +38,7 @@ const navLinkClass = ({ isActive }) =>
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext) ?? {};
+  const { totalCount } = useContext(CartContext);
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
 
@@ -91,9 +93,11 @@ const Navbar = () => {
       <div className="flex items-center gap-5">
         <NavLink to="/cart" className="relative text-neutral-200 transition-colors hover:text-white">
           <ShoppingCart className="size-5" />
-          <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground">
-            7
-          </span>
+          {totalCount > 0 && (
+            <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground">
+              {totalCount > 9 ? "9+" : totalCount}
+            </span>
+          )}
         </NavLink>
 
         {user ? (

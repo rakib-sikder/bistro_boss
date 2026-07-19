@@ -11,7 +11,7 @@ const ShouldTry = () => {
   return (
     <Reveal className="mt-10 mb-20 grid gap-10 md:grid-cols-3">
       {firstThree?.map((item) => (
-        <FoodItemCart key={item._id} img={item.image} FoodName={item.name} FoodDetails={item.recipe} />
+        <FoodItemCart key={item._id} item={item} />
       ))}
     </Reveal>
   );
