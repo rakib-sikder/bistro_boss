@@ -7,16 +7,17 @@ import {
 import "./index.css";
 import { router } from "./Routes/Routes.jsx";
 import AuthProvider from "./userAuthentication/AuthProvider.jsx";
+import { ErrorBoundary } from "./ErrorBoundary.jsx";
 
 
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider><div className="max-w-screen-xl mx-auto">
-    <RouterProvider router={router} />
-    </div></AuthProvider>
-      
-    
+    <ErrorBoundary>
+      <AuthProvider><div className="max-w-screen-xl mx-auto">
+      <RouterProvider router={router} />
+      </div></AuthProvider>
+    </ErrorBoundary>
   </React.StrictMode>
 );
