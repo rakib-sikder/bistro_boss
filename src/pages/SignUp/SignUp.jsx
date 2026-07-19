@@ -1,83 +1,83 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+
 import { AuthContext } from "../../userAuthentication/AuthProvider";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+import { Reveal } from "@/components/motion/Reveal";
 
 const SignUp = () => {
-    const {signUp}= useContext(AuthContext);
+  const { signUp } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
-   const onSubmit = (data) => {
-    const { username, email, password } = data;
-    signUp(email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("User signed up successfully:", user);
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    return signUp(email, password)
+      .then(() => {
+        toast.success("Account created — welcome to Bistro Boss!");
+        navigate("/");
       })
       .catch((error) => {
-        console.error("Error signing up:", error);
-      });}
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-neutral-50 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <p className="text-xs tracking-[0.3em] uppercase text-[#d3502a] mb-1 text-center">Join us</p>
-        <h2 className="text-2xl font-semibold mb-6 text-center">Create your account</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-neutral-600 mb-1.5">
-              Username
-            </label>
-            <input
-              type="text"
-              {...register("username", { required: true })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d3502a]/30 focus:border-[#d3502a]"
-              placeholder="Enter your username"
+        toast.error(error.message || "Couldn't create your account — please try again.");
+      });
+  };
 
-            />
-            {errors.username && <span className="text-xs text-red-600">This field is required</span>}
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-neutral-600 mb-1.5">
-              Email
-            </label>
-            <input
-              type="email"
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d3502a]/30 focus:border-[#d3502a]"
-              placeholder="Enter your email"
-              {...register("email", { required: true })}
-            />
-            {errors.email && <span className="text-xs text-red-600">This field is required</span>}
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-neutral-600 mb-1.5">
-              Password
-            </label>
-            <input
-              type="password"
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d3502a]/30 focus:border-[#d3502a]"
-              placeholder="Enter your password"
-              {...register("password", { minLength: 6 , maxLength: 20, required:true, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/ })}
-            />
-            {errors.password && <span className="text-xs text-red-600">This field is required</span>}
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-[#d3502a] text-white py-2.5 rounded-full font-medium hover:bg-[#b8451f] transition-colors"
-          >
-            Sign Up
-          </button>
-        </form>
-        <p className="mt-5 text-sm text-center text-neutral-500">
-          Already have an account?{" "}
-          <a href="/login" className="text-[#d3502a] hover:underline font-medium">
-            Login
-          </a>
-        </p>
-      </div>
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-neutral-50 px-4">
+      <Reveal>
+        <Card className="w-full max-w-md rounded-2xl shadow-xl">
+          <CardContent>
+            <p className="mb-1 text-center text-xs uppercase tracking-[0.3em] text-primary">Join us</p>
+            <h2 className="mb-6 text-center text-2xl font-semibold">Create your account</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="space-y-1.5">
+                <Label htmlFor="username" className="text-neutral-600">Username</Label>
+                <Input id="username" type="text" placeholder="Enter your username" {...register("username", { required: true })} />
+                {errors.username && <span className="text-xs text-red-600">This field is required</span>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="email" className="text-neutral-600">Email</Label>
+                <Input id="email" type="email" placeholder="Enter your email" {...register("email", { required: true })} />
+                {errors.email && <span className="text-xs text-red-600">This field is required</span>}
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="password" className="text-neutral-600">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/,
+                  })}
+                />
+                {errors.password && <span className="text-xs text-red-600">This field is required</span>}
+              </div>
+              <Button type="submit" disabled={isSubmitting} className="w-full rounded-full">
+                {isSubmitting ? "Creating account…" : "Sign Up"}
+              </Button>
+            </form>
+            <p className="mt-5 text-center text-sm text-neutral-500">
+              Already have an account?{" "}
+              <a href="/login" className="font-medium text-primary hover:underline">
+                Login
+              </a>
+            </p>
+          </CardContent>
+        </Card>
+      </Reveal>
     </div>
   );
 };

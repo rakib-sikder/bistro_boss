@@ -17,13 +17,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2 tracking-wide">FOLLOW US</h3>
             <p className="text-neutral-400 text-sm">Join us on social media</p>
             <div className="flex justify-center gap-4 mt-4 text-lg">
-              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-[#d3502a] hover:text-[#d3502a] transition-colors">
+              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-primary hover:text-primary transition-colors">
                 <i className="fa-brands fa-facebook-f"></i>
               </a>
-              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-[#d3502a] hover:text-[#d3502a] transition-colors">
+              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-primary hover:text-primary transition-colors">
                 <i className="fa-brands fa-instagram"></i>
               </a>
-              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-[#d3502a] hover:text-[#d3502a] transition-colors">
+              <a href="#" className="h-9 w-9 flex items-center justify-center rounded-full border border-white/10 hover:border-primary hover:text-primary transition-colors">
                 <i className="fa-brands fa-twitter"></i>
               </a>
             </div>

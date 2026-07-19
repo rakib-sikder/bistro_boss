@@ -1,5 +1,3 @@
-import React from "react";
-
 const ItemDetails = ({
   heading,
   textDetails,
@@ -9,21 +7,17 @@ const ItemDetails = ({
 }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center bg-fixed `}
+      className="flex flex-col items-center justify-center bg-fixed"
       style={{
         backgroundImage: `url(${backgroundImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-
-
       }}
     >
-      <div className={`${backgroundColor} ${opacity} text-center p-16 sm:p-24 m-6 sm:m-24 rounded-2xl shadow-xl max-w-2xl`}>
-        <p className="text-[#d3502a] text-xs tracking-[0.3em] uppercase mb-3 font-medium">Our Story</p>
-        <h3 className="uppercase text-3xl sm:text-4xl font-semibold mb-4 tracking-wide">{heading}</h3>
-        <p className="text-sm text-neutral-600 leading-relaxed">
-          {textDetails}
-        </p>
+      <div className={`${backgroundColor} ${opacity} m-6 max-w-2xl rounded-2xl p-16 text-center shadow-xl sm:m-24 sm:p-24`}>
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-primary">Our Story</p>
+        <h3 className="mb-4 text-3xl font-semibold uppercase tracking-wide sm:text-4xl">{heading}</h3>
+        <p className="text-sm leading-relaxed text-neutral-600">{textDetails}</p>
       </div>
     </div>
   );

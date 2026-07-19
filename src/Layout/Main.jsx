@@ -5,12 +5,12 @@ import Navbar from '../pages/shared/Navbar';
 
 const Main = () => {
     const location = useLocation()
-    const islogin =location.pathname.includes("login")
+    const hideChrome = location.pathname.includes("login") || location.pathname.includes("signup")
     return (
         <>
-            {islogin || <Navbar />}
+            {hideChrome || <Navbar />}
             <Outlet />
-            {islogin || <Footer />}
+            {hideChrome || <Footer />}
         </>
     );
 };

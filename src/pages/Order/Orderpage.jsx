@@ -47,12 +47,15 @@ const Orderpage = () => {
 
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}
       className="max-w-screen-xl mx-auto">
-        <TabList className="uppercase font-bold flex justify-center items-center gap-10 mt-10">
-          <Tab>Salad</Tab>
-          <Tab>Pizza</Tab>
-          <Tab>Dessert</Tab>
-          <Tab>Soup</Tab>
-          <Tab>Drinks</Tab>
+        <TabList className="mt-10 flex items-center justify-center gap-10 font-bold uppercase">
+          {["Salad", "Pizza", "Dessert", "Soup", "Drinks"].map((label) => (
+            <Tab
+              key={label}
+              className="cursor-pointer border-b-2 border-transparent pb-2 text-neutral-500 outline-none transition-colors hover:text-primary"
+            >
+              {label}
+            </Tab>
+          ))}
         </TabList>
 
         <TabPanel >

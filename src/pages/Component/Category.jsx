@@ -9,11 +9,12 @@ import img3 from "../../assets/home/slide3.jpg";
 import img4 from "../../assets/home/slide4.jpg";
 import img5 from "../../assets/home/slide5.jpg";
 import Sectiontitle from '../shared/Section title/Sectiontitle';
+import { Reveal } from "@/components/motion/Reveal";
 
 
 const Category = () => {
     return (
-        <section>
+        <Reveal>
             <Sectiontitle subHeading={"From 11.00am to 10.00pm"} heading={"Order Online"}></Sectiontitle>
             <Swiper
         slidesPerView={4}
@@ -45,7 +46,7 @@ const Category = () => {
           <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Salads</h3>
         </SwiperSlide>
       </Swiper>
-        </section>
+        </Reveal>
     );
 };
 

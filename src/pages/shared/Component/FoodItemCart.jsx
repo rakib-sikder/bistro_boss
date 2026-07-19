@@ -5,7 +5,7 @@ import Button from './Button';
 const FoodItemCart = ({img,FoodName,FoodDetails,price}) => {
 
     return (
-        <div className="rounded-2xl overflow-hidden bg-white shadow-sm border border-neutral-100 hover:shadow-md transition-shadow relative">
+        <div className="relative overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
           <figure>
             <img
               src={img}
