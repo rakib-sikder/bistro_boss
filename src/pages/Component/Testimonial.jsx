@@ -13,22 +13,22 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonial = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("/reviews.json")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
   return (
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
       {reviews.map((review) => (
-        <SwiperSlide >
-          <div className="flex flex-col items-center justify-center h-full px-10 py-20 bg-gray-100 rounded-lg">
-          <Rating style={{ maxWidth: 180 }} value={review.rating} readOnly />
-          <FaQuoteLeft className="text-7xl" />
-           <p className="text-lg  text-gray-600 px-4">{review.details}</p>
-            <h3 className="mt-4 text-xl font-semibold text-yellow-600">
+        <SwiperSlide key={review._id}>
+          <div className="flex flex-col items-center justify-center h-full px-10 py-20 bg-neutral-50 rounded-2xl text-center">
+          <Rating style={{ maxWidth: 140 }} value={review.rating} readOnly />
+          <FaQuoteLeft className="text-4xl text-[#d3502a]/30 my-4" />
+           <p className="text-base text-neutral-600 px-4 max-w-xl leading-relaxed">{review.details}</p>
+            <h3 className="mt-5 text-lg font-semibold text-[#d3502a]">
               {review.name}
             </h3>
-            
+
           </div>
         </SwiperSlide>
       ))}

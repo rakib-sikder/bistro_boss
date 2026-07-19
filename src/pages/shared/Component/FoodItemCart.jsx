@@ -3,34 +3,29 @@ import Button from './Button';
 
 
 const FoodItemCart = ({img,FoodName,FoodDetails,price}) => {
-    
+
     return (
-         <div>
-      <div className="grid md:grid-cols-3 gap-10 mt-10 mb-20">
-        <div className="card bg-base-100 w-96 shadow-sm">
+        <div className="rounded-2xl overflow-hidden bg-white shadow-sm border border-neutral-100 hover:shadow-md transition-shadow relative">
           <figure>
             <img
               src={img}
-              alt="Shoes"
+              alt={FoodName}
+              className="w-full h-48 object-cover"
             />
           </figure>
-          <p className={`absolute top-4 right-6 ${price ? "bg-[#111827]": ""} text-white px-2 py-1`}>{price}{`${price = "undefined"? "" : "$"}`}</p>
-          <div className="card-body text-center">
-            <h2 className= "text-xl">{FoodName}</h2>
-            <p>
+          {price && <p className="absolute top-4 right-4 bg-neutral-900 text-white text-sm px-2.5 py-1 rounded-full">${price}</p>}
+          <div className="p-6 text-center">
+            <h2 className="text-lg font-semibold uppercase tracking-wide">{FoodName}</h2>
+            <p className="text-sm text-neutral-500 mt-2">
                 {
                     FoodDetails
                 }
             </p>
-            <div className="card-actions justify-center text-[#BB8506]">
-              <Button className="hover:text-[#BB8506] " btnText={"Add to Cart"}></Button>
+            <div className="mt-4 flex justify-center">
+              <Button btnText={"Add to Cart"}></Button>
             </div>
           </div>
         </div>
-        
-        
-      </div>
-    </div>
     );
 };
 

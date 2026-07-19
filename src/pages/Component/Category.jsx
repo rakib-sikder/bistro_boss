@@ -24,20 +24,25 @@ const Category = () => {
         modules={[Pagination]}
         className="mySwiper mb-10"
       >
-        <SwiperSlide><img src={img1} alt="" />
-        <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Salads</h3>
-        </SwiperSlide> 
-        <SwiperSlide><img src={img2} alt="" />
-        <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Pizza</h3>
+        <SwiperSlide className="rounded-2xl overflow-hidden">
+          <img src={img1} alt="" className="rounded-2xl" />
+          <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Salads</h3>
         </SwiperSlide>
-        <SwiperSlide><img src={img3} alt="" />
-        <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Soups</h3>
+        <SwiperSlide className="rounded-2xl overflow-hidden">
+          <img src={img2} alt="" className="rounded-2xl" />
+          <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Pizza</h3>
         </SwiperSlide>
-        <SwiperSlide><img src={img4} alt="" />
-        <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Desserts</h3>
+        <SwiperSlide className="rounded-2xl overflow-hidden">
+          <img src={img3} alt="" className="rounded-2xl" />
+          <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Soups</h3>
         </SwiperSlide>
-        <SwiperSlide><img src={img5} alt="" />
-        <h3 className='text-4xl uppercase text-center -mt-16 pb-6 text-white'>Salads</h3>
+        <SwiperSlide className="rounded-2xl overflow-hidden">
+          <img src={img4} alt="" className="rounded-2xl" />
+          <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Desserts</h3>
+        </SwiperSlide>
+        <SwiperSlide className="rounded-2xl overflow-hidden">
+          <img src={img5} alt="" className="rounded-2xl" />
+          <h3 className='text-2xl font-semibold tracking-wide uppercase text-center -mt-16 pb-6 text-white drop-shadow'>Salads</h3>
         </SwiperSlide>
       </Swiper>
         </section>

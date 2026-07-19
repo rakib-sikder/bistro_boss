@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Footer from '../pages/shared/footer';
+import Footer from '../pages/shared/Footer';
 import Navbar from '../pages/shared/Navbar';
 
 const Main = () => {
