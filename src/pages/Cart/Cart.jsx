@@ -1,24 +1,115 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, PartyPopper } from "lucide-react";
 import { toast } from "sonner";
 
 import { CartContext } from "../../cart/CartProvider";
 import PageBanner from "../shared/Component/PageBanner";
 import { Button as UiButton } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import img from "../../assets/shop/banner2.jpg";
 
 const Cart = () => {
   const { items, removeItem, updateQty, clearCart, totalPrice } = useContext(CartContext);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const [confirmedOrder, setConfirmedOrder] = useState(null);
 
-  const handleCheckout = () => {
-    clearCart();
-    toast.success("Order placed! Thanks for choosing Bistro Boss.");
-    navigate("/");
+  useEffect(() => {
+    const sessionId = searchParams.get("session_id");
+    const cancelled = searchParams.get("cancelled");
+
+    if (cancelled) {
+      toast.error("Checkout was cancelled — no charge was made.");
+      setSearchParams({}, { replace: true });
+      return;
+    }
+    if (!sessionId) return;
+
+    setConfirming(true);
+    fetch("/api/confirm-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Could not confirm your payment");
+        setConfirmedOrder(data);
+        clearCart();
+      })
+      .catch((err) => toast.error(err instanceof Error ? err.message : "Could not confirm your payment"))
+      .finally(() => setConfirming(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  const handleCheckout = async () => {
+    setCheckingOut(true);
+    try {
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Could not start checkout");
+      window.location.href = data.url;
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not start checkout");
+      setCheckingOut(false);
+    }
   };
+
+  if (confirming) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
+        <div className="size-10 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <p className="text-neutral-500">Confirming your payment…</p>
+      </div>
+    );
+  }
+
+  if (confirmedOrder) {
+    return (
+      <div className="mx-auto flex max-w-lg flex-col items-center px-6 py-24 text-center">
+        <Helmet>
+          <title>Bistro boss | Order confirmed</title>
+        </Helmet>
+        <div className="flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
+          <PartyPopper className="size-7" />
+        </div>
+        <h1 className="mt-6 text-3xl font-semibold">Order confirmed</h1>
+        <p className="mt-2 text-neutral-500">Thanks for your order — we're firing it up now.</p>
+        <Card className="mt-6 w-full rounded-2xl text-left">
+          <CardContent className="space-y-2">
+            {confirmedOrder.items.map((it, i) => (
+              <div key={i} className="flex justify-between text-sm">
+                <span className="text-neutral-600">{it.qty} × {it.name}</span>
+              </div>
+            ))}
+            <Separator className="my-2" />
+            <div className="flex justify-between text-sm">
+              <span className="text-neutral-500">Total paid</span>
+              <span className="font-semibold text-primary">${confirmedOrder.amountTotal.toFixed(2)}</span>
+            </div>
+            {confirmedOrder.customerEmail && (
+              <div className="flex justify-between text-sm">
+                <span className="text-neutral-500">Receipt sent to</span>
+                <span className="font-medium">{confirmedOrder.customerEmail}</span>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+        <UiButton className="mt-8 rounded-full" onClick={() => navigate("/")}>
+          Back to home
+        </UiButton>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -85,11 +176,11 @@ const Cart = () => {
             </div>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <UiButton variant="outline" className="rounded-full" onClick={clearCart}>
+              <UiButton variant="outline" className="rounded-full" onClick={clearCart} disabled={checkingOut}>
                 Clear cart
               </UiButton>
-              <UiButton className="rounded-full" onClick={handleCheckout}>
-                Checkout
+              <UiButton className="rounded-full" onClick={handleCheckout} disabled={checkingOut}>
+                {checkingOut ? "Redirecting to checkout…" : `Checkout · $${totalPrice.toFixed(2)}`}
               </UiButton>
             </div>
           </>
